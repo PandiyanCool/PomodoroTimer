@@ -1,4 +1,4 @@
-(function() {
+(function () {
   'use strict';
 
   angular
@@ -6,7 +6,7 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($timeout, webDevTec, toastr) {
+  function MainController($timeout, webDevTec, toastr, $interval) {
     var vm = this;
 
     vm.awesomeThings = [];
@@ -14,11 +14,18 @@
     vm.creationDate = 1473251366207;
     vm.showToastr = showToastr;
 
+    vm.playTimer = playTimer;
+    vm.resetTimer = resetTimer;
+    vm.tomatoSize = 25;
+    vm.countDownTimer = vm.tomatoSize * 60;
+    vm.timeStatus = 'initial';
+    var stop;
+
     activate();
 
     function activate() {
       getWebDevTec();
-      $timeout(function() {
+      $timeout(function () {
         vm.classAnimation = 'rubberBand';
       }, 4000);
     }
@@ -31,9 +38,41 @@
     function getWebDevTec() {
       vm.awesomeThings = webDevTec.getTec();
 
-      angular.forEach(vm.awesomeThings, function(awesomeThing) {
+      angular.forEach(vm.awesomeThings, function (awesomeThing) {
         awesomeThing.rank = Math.random();
       });
     }
+
+
+    function playTimer() {
+      console.log('play timer module triggered!');
+
+      if (angular.isDefined(stop)) return;
+
+      stop = $interval(function () {
+        if (vm.countDownTimer > 0) {
+          vm.countDownTimer--;
+        }
+        else {
+          resetTimer();
+        }
+      }, 1000);
+
+    }
+
+    function pauseTimer() {
+      console.log('pause timer module triggered');
+      if (angular.isDefined(stop)) {
+        $interval.cancel(stop);
+        stop = undefined;
+      }
+    }
+
+    function resetTimer() {
+      console.log('reset timer module triggered');
+      vm.countDownTimer = vm.tomatoSize * 60;
+      pauseTimer();
+    }
+
   }
 })();

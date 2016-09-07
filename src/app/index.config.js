@@ -1,4 +1,4 @@
-(function() {
+(function () {
   'use strict';
 
   angular
@@ -6,9 +6,16 @@
     .config(config);
 
   /** @ngInject */
-  function config($logProvider, toastrConfig) {
+  function config($logProvider, toastrConfig/*, $mdThemingProvider*/) {
     // Enable log
     $logProvider.debugEnabled(true);
+
+    // $mdThemingProvider
+    //   .theme('default')
+    //   .primaryPalette('indigo')
+    //   .accentPalette('pink')
+    //   .warnPalette('red')
+    //   .backgroundPalette('blue-grey');
 
     // Set options third-party lib
     toastrConfig.allowHtml = true;
