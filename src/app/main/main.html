@@ -1,21 +1,24 @@
 <div>
 
-  <md-content>
+  <md-content layout="column">
     <header>
       <acme-navbar creation-date="main.creationDate"></acme-navbar>
     </header>
 
-    <div class="techs" layout-align-lg="center center" layout="row">
+    <div class="techs" layout-align-lg="center center" layout-padding>
       <md-card>
         <md-card-content>
-          {{main.countDownTimer}}
+          <div id="status">Work</div>
+          <div id="counter">{{main.countDownTimer|secondsToDateTime}}</div>
         </md-card-content>
-        <md-button class="md-raised md-primary" ng-click="main.playTimer()">Play</md-button>
-        <md-button class="md-raised md-primary" ng-click="main.pauseTimer()">Pause</md-button>
-        <md-button class="md-raised md-warn" ng-click="main.resetTimer()">Reset</md-button>
-
+        <div layout="row" id="controls">
+          <md-button class="md-raised md-primary" ng-click="main.playTimer()">Play</md-button>
+          <md-button class="md-raised md-primary" ng-click="main.pauseTimer()">Pause</md-button>
+          <md-button class="md-raised md-warn" ng-click="main.resetTimer()">Reset</md-button>
+        </div>
       </md-card>
     </div>
+
   </md-content>
 
 </div>

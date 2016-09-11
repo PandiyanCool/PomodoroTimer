@@ -5,6 +5,17 @@
     .module('pomodoroTimer')
     .controller('MainController', MainController);
 
+  angular
+    .module('pomodoroTimer')
+    .filter('secondsToDateTime', [function () {
+      return function (input) {
+        var minutes = parseInt(input / 60, 10);
+        var seconds = input % 60;
+
+        return minutes + ' m' +  ' : ' + seconds + ' s';
+      }
+    }])
+
   /** @ngInject */
   function MainController($timeout, webDevTec, toastr, $interval) {
     var vm = this;
@@ -16,7 +27,8 @@
 
     vm.playTimer = playTimer;
     vm.resetTimer = resetTimer;
-    vm.tomatoSize = 25;
+    vm.pauseTimer = pauseTimer;
+    vm.tomatoSize = 1;
     vm.countDownTimer = vm.tomatoSize * 60;
     vm.timeStatus = 'initial';
     var stop;
@@ -71,6 +83,7 @@
     function resetTimer() {
       console.log('reset timer module triggered');
       vm.countDownTimer = vm.tomatoSize * 60;
+      vm.determinateValue = vm.countDownTimer;
       pauseTimer();
     }
 
