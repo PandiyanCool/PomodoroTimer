@@ -28,7 +28,7 @@
     vm.playTimer = playTimer;
     vm.resetTimer = resetTimer;
     vm.pauseTimer = pauseTimer;
-    vm.tomatoSize = 1;
+    vm.tomatoSize = 25;
     vm.countDownTimer = vm.tomatoSize * 60;
     vm.timeStatus = 'initial';
     var stop;

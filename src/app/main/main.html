@@ -1,24 +1,24 @@
-<div>
+<div layout="row">
+  <div flex="100">
+    <md-content layout="column">
+      <header>
+        <acme-navbar creation-date="main.creationDate"></acme-navbar>
+      </header>
 
-  <md-content layout="column">
-    <header>
-      <acme-navbar creation-date="main.creationDate"></acme-navbar>
-    </header>
-
-    <div class="techs" layout-align-lg="center center" layout-padding>
-      <md-card>
-        <md-card-content>
-          <div id="status">Work</div>
-          <div id="counter">{{main.countDownTimer|secondsToDateTime}}</div>
-        </md-card-content>
-        <div layout="row" id="controls">
-          <md-button class="md-raised md-primary" ng-click="main.playTimer()">Play</md-button>
-          <md-button class="md-raised md-primary" ng-click="main.pauseTimer()">Pause</md-button>
-          <md-button class="md-raised md-warn" ng-click="main.resetTimer()">Reset</md-button>
+      <div>
+        <div flex>
+        <div id="status" class="md-display-2">Work</div>
+        <div id="counter" class="md-display-4">{{main.countDownTimer|secondsToDateTime}}</div>
         </div>
-      </md-card>
-    </div>
+        <div layout="row" id="controls">
+          <div flex="100">
+            <md-button class="md-raised md-primary" ng-click="main.playTimer()">Play</md-button>
+            <md-button class="md-raised md-primary" ng-click="main.pauseTimer()">Pause</md-button>
+            <md-button class="md-raised md-warn" ng-click="main.resetTimer()">Reset</md-button>
+          </div>
+        </div>
+      </div>
 
-  </md-content>
-
+    </md-content>
+  </div>
 </div>
