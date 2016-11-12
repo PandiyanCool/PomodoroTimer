@@ -1,5 +1,5 @@
 # PomodoroTimer
 
-Pomodoro Timer 
+Pomodoro Timer App link
 
 http://pandiyancool.github.io/PomodoroTimer/
